@@ -1,0 +1,36 @@
+<mat-form-field appearance="outline">
+  <mat-label>Filter payment by name</mat-label>
+  <input matInput placeholder="Filter payment by name" [formControl]="searchControl">
+  <span matIconPrefix class="ms-3">
+    <mat-icon>search</mat-icon>
+  </span>
+</mat-form-field>
+
+<h3><b>Credit Card</b></h3>
+
+<div class="d-flex flex-column justify-content-evenly mt-4">
+  <div style="height: 250px;">
+<img src="/assets/images/credit_card_info.png" alt="image" height="230px" width="350px">
+</div>
+
+<h6 class="subtitle">Recent Payments</h6>
+<mat-list class="custom_list">
+  @for (payment of payments$ | async; track payment) {
+    @if (valuesToShow(payment)) {
+    <mat-list-item class="py-3">
+      <div class="d-flex align-items-center justify-content-between">
+      <span class="concept">{{payment.concept}}</span>
+      <span
+      [ngClass]="{'expense_type': payment.type === 'expense', 'income_type': payment.type === 'income'}">{{formatType(payment.type)}}</span>
+      <span >{{payment.date | date: 'MMM d, y'}}</span>
+      <span
+      [ngClass]="{'expense_amount': payment.type === 'expense', 'income_amount': payment.type === 'income'}">
+        {{ payment.type === 'expense' ? '-' : '+' }}
+        {{payment.amount | currency:'USD':'symbol':'1.2-2'}}</span>
+      </div>
+    </mat-list-item>
+    <mat-divider></mat-divider>
+}
+  }
+</mat-list>
+</div>

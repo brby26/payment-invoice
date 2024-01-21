@@ -1,0 +1,6 @@
+{
+  "/openlibrary": {
+    "target": "https://openlibrary.org/",
+    "secure": true
+  }
+}

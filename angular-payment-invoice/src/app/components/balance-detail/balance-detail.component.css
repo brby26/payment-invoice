@@ -1,0 +1,15 @@
+.header-image {
+  background-image: url('https://material.angular.io/assets/img/examples/shiba1.jpg');
+  background-size: cover;
+}
+
+
+::ng-deep .mat-mdc-card-header-text {
+  display: flex;
+  align-items: center;
+  flex-direction: column;
+}
+
+.amount_available {
+  color: #41477A;
+}

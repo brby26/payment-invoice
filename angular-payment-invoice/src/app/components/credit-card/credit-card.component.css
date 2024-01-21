@@ -1,0 +1,55 @@
+
+.custom_list {
+  height: 220px;
+  overflow-y: auto;
+  span {
+    display: inline-block;
+    width: 80px;
+    font-size: 1.5vh;
+  }
+
+  .concept {
+    width: 120px;
+    font-weight: 500;
+  }
+}
+
+.subtitle {
+  margin: 20px;
+}
+
+
+.expense_amount {
+  color: #EB5757;
+}
+
+.income_amount {
+  color: var(--bs-success)
+}
+
+.income_type {
+  color: #41477A;
+}
+
+.expense_type {
+  color: #F2994A
+}
+
+::-webkit-scrollbar {
+  width: 14px;
+}
+
+::-webkit-scrollbar-track {
+  border-radius: 7px;
+  background-color: white;
+  border: 1px solid #0000001f;
+}
+
+::-webkit-scrollbar-thumb {
+  border-radius: 7px;
+  border: 3px solid transparent;
+  background-clip: content-box;
+  background-color: #0000001f;
+}
+
+

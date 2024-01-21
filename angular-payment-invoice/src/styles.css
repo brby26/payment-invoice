@@ -1,0 +1,16 @@
+/* You can add global styles to this file, and also import other style files */
+@import url("./custom.css");
+
+html, body { height: 100%;}
+body { margin: 0; font-family: 'Poppins', sans-serif; }
+
+.mdc-text-field--outlined {
+  --mdc-outlined-text-field-container-shape: 28px !important;
+}
+
+mat-form-field {
+  width: 350px;
+}
+
+
+

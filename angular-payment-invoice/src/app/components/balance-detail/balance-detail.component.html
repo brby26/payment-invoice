@@ -1,0 +1,40 @@
+<div class="d-flex align-items-center justify-content-end" style="margin-bottom: 1.4rem;">
+<div class="mat-mdc-card-avatar header-image">
+</div>
+</div>
+
+<h3><b>Balance Detail</b></h3>
+
+<div class="d-flex flex-column justify-content-center mt-4">
+<mat-card appearance="outlined" style="height: 250px;">
+  <mat-card-header class="d-flex align-items-center flex-column justify-content-centers mb-4">
+    <div mat-card-avatar class="header-image"></div>
+    <mat-card-title>Incentro CX</mat-card-title>
+    <mat-card-subtitle>{{currentDate | date: 'MMM d, y' }}</mat-card-subtitle>
+  </mat-card-header>
+  <mat-divider></mat-divider>
+  <mat-card-content class="d-flex align-items-center flex-column justify-content-center mt-3">
+    <p class="mat-mdc-card-subtitle">
+      Amount Available:
+    </p>
+    <p class="mat-mdc-card-title amount_available"><b>{{ (balance$ | async)?.available | currency:'USD':'symbol':'1.2-2' }}</b></p>
+  </mat-card-content>
+</mat-card>
+
+<mat-card appearance="outlined" class="d-flex align-items-center flex-column justify-content-evenly mt-5" style="height: 250px;">
+  <ng-container>
+  <mat-card-header>
+    <mat-card-title><b>Request API:</b></mat-card-title>
+  </mat-card-header>
+</ng-container>
+  <mat-card-content>
+    @if (book$ | async; as book) {
+      <p>{{ book }}</p>
+    }
+  </mat-card-content>
+
+  <mat-card-actions>
+    <button mat-flat-button color="primary" (click)="purchase()" type="submit" [disabled]="book === null"><b>Get random API</b></button>
+  </mat-card-actions>
+</mat-card>
+</div>
