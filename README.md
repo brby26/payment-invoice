@@ -13,6 +13,7 @@ Dentro de la carpeta "store" se encuentra implementado y es utilizado en distint
 Se han creado 3 componentes: Home, Balance-detail y Credit-card, siendo el primero el padre de estos dos últimos
 
 ## Diseño con Metodología (Setup 5) 
+```bash
 ├───app
 │   ├───components
 │   │   ├───balance-detail
@@ -25,3 +26,4 @@ Se han creado 3 componentes: Home, Balance-detail y Credit-card, siendo el prime
 │       └───payments
 └───assets
     └───images
+```
