@@ -1,9 +1,9 @@
-import { Component, OnDestroy, OnInit } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 import {MatButtonModule} from '@angular/material/button';
 import {MatCardModule} from '@angular/material/card';
 import {MatDividerModule} from '@angular/material/divider';
-import { Observable, Subject, map, takeUntil } from 'rxjs';
-import { CommonModule } from '@angular/common';
+import { Observable, map } from 'rxjs';
+import { AsyncPipe, CurrencyPipe, DatePipe } from '@angular/common';
 import { BookService } from '../../core/services/book.service';
 import { Store } from '@ngrx/store';
 import { addPayment } from '../../store/payments/payments.action';
@@ -12,21 +12,19 @@ import { Account, Payment } from '../../core/models/payment.model';
 @Component({
   selector: 'app-balance-detail',
   standalone: true,
-  imports: [MatCardModule, MatButtonModule,MatDividerModule, CommonModule],
+  imports: [MatCardModule, MatButtonModule,MatDividerModule, DatePipe, CurrencyPipe, AsyncPipe],
   templateUrl: './balance-detail.component.html',
   styleUrl: './balance-detail.component.css',
 })
-export class BalanceDetailComponent implements OnInit, OnDestroy {
+export class BalanceDetailComponent implements OnInit {
 
   book$: Observable<any>;
   balance$: Observable<Account>;
   currentDate = new Date();
-  submit$: Subject<boolean> = new Subject();
-  destroy$ = new Subject();
   book = null;
 
   constructor(private bookService: BookService, private store: Store<{payments: Account}>){
-    this.balance$ = store.select('payments').pipe(takeUntil(this.destroy$));
+    this.balance$ = store.select('payments')
   }
 
 
@@ -34,10 +32,6 @@ export class BalanceDetailComponent implements OnInit, OnDestroy {
     this.loadBook();
   }
 
-  ngOnDestroy(): void {
-    this.destroy$.next(null);
-    this.destroy$.complete();
-  }
 
   purchase(){
     if(this.book !== null){
@@ -54,8 +48,7 @@ export class BalanceDetailComponent implements OnInit, OnDestroy {
           this.book = value.docs[0].title;
           return value.docs[0].title
         }
-      }),
-      takeUntil(this.destroy$)
+      })
     )
   }
 }
